@@ -14,14 +14,6 @@ import java.util.stream.Collectors;
 @RestController
 @RequestMapping("/pokemon")
 public class PokemonController {
-    /*@GetMapping("/{name}")
-    public Object getPokemon(@PathVariable String name) {
-        RestTemplate restTemplate = new RestTemplate();
-        Object object = restTemplate.getForObject("https://pokeapi.co/api/v2/pokemon/{name}", Object.class, name);
-
-        return object;
-    }*/
-
     @GetMapping("/{name}")
     public PokemonDTO getPokemon(@PathVariable String name) {
         RestTemplate restTemplate = new RestTemplate();
@@ -31,7 +23,9 @@ public class PokemonController {
         List<String> abilities = pokemonResponse.getAbilities().stream()
                 .map(abilityContainer -> abilityContainer.getAbility().getName())
                 .sorted().toList();
+        List<String> types = pokemonResponse.getTypes().stream()
+                .map(typeContainer -> typeContainer.getType().getName()).toList();
 
-        return new PokemonDTO(pokemonName, abilities);
+        return new PokemonDTO(pokemonName, abilities, types);
     }
 }
