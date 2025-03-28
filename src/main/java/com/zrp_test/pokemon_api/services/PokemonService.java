@@ -3,6 +3,7 @@ package com.zrp_test.pokemon_api.services;
 import com.zrp_test.pokemon_api.clients.PokemonResponse;
 import com.zrp_test.pokemon_api.components.RestTemplateComponent;
 import com.zrp_test.pokemon_api.dtos.PokemonDTO;
+import com.zrp_test.pokemon_api.entities.Sprites;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.beans.factory.annotation.Value;
 import org.springframework.http.HttpStatus;
@@ -33,8 +34,9 @@ public class PokemonService {
                     .sorted().toList();
             List<String> types = pokemonResponse.getTypes().stream()
                     .map(typeContainer -> typeContainer.getType().getName()).toList();
+            Sprites sprites = pokemonResponse.getSprites();
 
-            return new PokemonDTO(pokemonName, abilities, types);
+            return new PokemonDTO(pokemonName, abilities, types, sprites);
         } catch (RestClientResponseException e) {
             if (e.getStatusCode() == HttpStatus.NOT_FOUND) {
                 throw new HttpClientErrorException(HttpStatus.NOT_FOUND);

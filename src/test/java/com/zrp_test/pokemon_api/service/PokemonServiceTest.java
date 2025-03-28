@@ -5,6 +5,7 @@ import com.zrp_test.pokemon_api.clients.PokemonResponse;
 import com.zrp_test.pokemon_api.clients.TypeContainer;
 import com.zrp_test.pokemon_api.components.RestTemplateComponent;
 import com.zrp_test.pokemon_api.entities.Ability;
+import com.zrp_test.pokemon_api.entities.Sprites;
 import com.zrp_test.pokemon_api.entities.Type;
 import com.zrp_test.pokemon_api.services.PokemonService;
 import org.junit.jupiter.api.Assertions;
@@ -44,7 +45,8 @@ public class PokemonServiceTest {
     void getPokemonFound() throws Exception {
         List<AbilityContainer> abilities = List.of(new AbilityContainer(new Ability("imposter")), new AbilityContainer(new Ability("limber")));
         List<TypeContainer> types = List.of(new TypeContainer(new Type("normal")));
-        PokemonResponse ditto = new PokemonResponse("ditto", abilities, types);
+        Sprites sprites = new Sprites("https://raw.githubusercontent.com/PokeAPI/sprites/master/sprites/pokemon/132.png", "https://raw.githubusercontent.com/PokeAPI/sprites/master/sprites/pokemon/shiny/132.png");
+        PokemonResponse ditto = new PokemonResponse("ditto", abilities, types, sprites);
         Mockito.when(restTemplate.getForObject(apiUrl+"{name}", PokemonResponse.class, "ditto")).thenReturn(ditto);
         var response = pokemonService.getPokemon("ditto");
 
