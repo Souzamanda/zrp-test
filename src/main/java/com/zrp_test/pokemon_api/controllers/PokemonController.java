@@ -20,7 +20,7 @@ public class PokemonController {
     private PokemonService pokemonService;
 
     @GetMapping("/{name}")
-    public PokemonDTO getPokemon(@PathVariable String name) {
+    public PokemonDTO getPokemon(@PathVariable String name) throws Exception {
         return pokemonService.getPokemon(name);
     }
 }
