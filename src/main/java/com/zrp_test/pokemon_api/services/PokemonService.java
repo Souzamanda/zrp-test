@@ -1,15 +1,12 @@
 package com.zrp_test.pokemon_api.services;
 
 import com.zrp_test.pokemon_api.clients.PokemonResponse;
-import com.zrp_test.pokemon_api.components.RestTemplateComponent;
 import com.zrp_test.pokemon_api.dtos.PokemonDTO;
 import com.zrp_test.pokemon_api.entities.Sprites;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.beans.factory.annotation.Value;
 import org.springframework.http.HttpStatus;
-import org.springframework.http.HttpStatusCode;
 import org.springframework.stereotype.Service;
-import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.client.HttpClientErrorException;
 import org.springframework.web.client.RestClientResponseException;
 import org.springframework.web.client.RestTemplate;
