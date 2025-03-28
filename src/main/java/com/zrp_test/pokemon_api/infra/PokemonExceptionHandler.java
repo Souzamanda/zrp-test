@@ -10,6 +10,6 @@ import org.springframework.web.client.HttpClientErrorException;
 public class PokemonExceptionHandler {
     @ExceptionHandler(HttpClientErrorException.class)
     public ResponseEntity pokemonNotFound(HttpClientErrorException exception) {
-        return ResponseEntity.status(HttpStatus.NOT_FOUND).body("Pokémon não encontrado");
+        return ResponseEntity.status(HttpStatus.NOT_FOUND).body("Pokémon não encontrado!\nVerifique o nome e tente novamente.");
     }
 }
