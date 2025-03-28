@@ -3,7 +3,6 @@ package com.zrp_test.pokemon_api.service;
 import com.zrp_test.pokemon_api.clients.AbilityContainer;
 import com.zrp_test.pokemon_api.clients.PokemonResponse;
 import com.zrp_test.pokemon_api.clients.TypeContainer;
-import com.zrp_test.pokemon_api.components.RestTemplateComponent;
 import com.zrp_test.pokemon_api.entities.Ability;
 import com.zrp_test.pokemon_api.entities.Sprites;
 import com.zrp_test.pokemon_api.entities.Type;
@@ -23,7 +22,6 @@ import org.springframework.web.client.RestClientResponseException;
 import org.springframework.web.client.RestTemplate;
 
 import java.nio.charset.Charset;
-import java.util.ArrayList;
 import java.util.List;
 
 @ExtendWith(MockitoExtension.class)
@@ -34,7 +32,7 @@ public class PokemonServiceTest {
     @Mock
     private RestTemplate restTemplate;
 
-    private String apiUrl = "https://pokeapi.co/api/v2/pokemon/";
+    private final String apiUrl = "https://pokeapi.co/api/v2/pokemon/";
 
     @BeforeEach
     void setup() {
@@ -46,7 +44,7 @@ public class PokemonServiceTest {
         List<AbilityContainer> abilities = List.of(new AbilityContainer(new Ability("imposter")), new AbilityContainer(new Ability("limber")));
         List<TypeContainer> types = List.of(new TypeContainer(new Type("normal")));
         Sprites sprites = new Sprites("https://raw.githubusercontent.com/PokeAPI/sprites/master/sprites/pokemon/132.png", "https://raw.githubusercontent.com/PokeAPI/sprites/master/sprites/pokemon/shiny/132.png");
-        PokemonResponse ditto = new PokemonResponse("ditto", abilities, types, sprites);
+        PokemonResponse ditto = new PokemonResponse("ditto", "132", abilities, types, sprites);
         Mockito.when(restTemplate.getForObject(apiUrl+"{name}", PokemonResponse.class, "ditto")).thenReturn(ditto);
         var response = pokemonService.getPokemon("ditto");
 

@@ -8,6 +8,8 @@ import java.util.List;
 public class PokemonResponse {
     private String name;
 
+    private String id;
+
     @JsonProperty("abilities")
     List<AbilityContainer> abilities;
 
@@ -33,12 +35,17 @@ public class PokemonResponse {
         return abilities;
     }
 
+    public String getId() {
+        return id;
+    }
+
     public PokemonResponse(String name) {
         this.name = name;
     }
 
-    public PokemonResponse(String name, List<AbilityContainer> abilities, List<TypeContainer> types, Sprites sprites) {
+    public PokemonResponse(String name, String id, List<AbilityContainer> abilities, List<TypeContainer> types, Sprites sprites) {
         this.name = name;
+        this.id = id;
         this.abilities = abilities;
         this.types = types;
         this.sprites = sprites;

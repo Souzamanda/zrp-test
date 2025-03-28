@@ -26,6 +26,7 @@ public class PokemonService {
             PokemonResponse pokemonResponse = restTemplate.getForObject(pokeapiUrl+"{name}", PokemonResponse.class, name);
 
             String pokemonName = pokemonResponse.getName();
+            String pokemonId = pokemonResponse.getId();
             List<String> abilities = pokemonResponse.getAbilities().stream()
                     .map(abilityContainer -> abilityContainer.getAbility().getName())
                     .sorted().toList();
@@ -33,7 +34,7 @@ public class PokemonService {
                     .map(typeContainer -> typeContainer.getType().getName()).toList();
             Sprites sprites = pokemonResponse.getSprites();
 
-            return new PokemonDTO(pokemonName, abilities, types, sprites);
+            return new PokemonDTO(pokemonName, pokemonId, abilities, types, sprites);
         } catch (RestClientResponseException e) {
             if (e.getStatusCode() == HttpStatus.NOT_FOUND) {
                 throw new HttpClientErrorException(HttpStatus.NOT_FOUND);
