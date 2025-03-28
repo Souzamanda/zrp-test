@@ -6,4 +6,11 @@ public class Type {
     public String getName() {
         return name;
     }
+
+    public Type(String name) {
+        this.name = name;
+    }
+
+    public Type() {
+    }
 }

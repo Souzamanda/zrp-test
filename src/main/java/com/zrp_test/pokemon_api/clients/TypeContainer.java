@@ -11,4 +11,11 @@ public class TypeContainer {
     public Type getType() {
         return type;
     }
+
+    public TypeContainer(Type type) {
+        this.type = type;
+    }
+
+    public TypeContainer() {
+    }
 }

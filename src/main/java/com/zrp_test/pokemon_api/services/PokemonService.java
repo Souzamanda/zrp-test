@@ -1,7 +1,9 @@
 package com.zrp_test.pokemon_api.services;
 
 import com.zrp_test.pokemon_api.clients.PokemonResponse;
+import com.zrp_test.pokemon_api.components.RestTemplateComponent;
 import com.zrp_test.pokemon_api.dtos.PokemonDTO;
+import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.beans.factory.annotation.Value;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.HttpStatusCode;
@@ -15,7 +17,8 @@ import java.util.List;
 
 @Service
 public class PokemonService {
-    private final RestTemplate restTemplate = new RestTemplate();
+    @Autowired
+    private RestTemplate restTemplate;
 
     @Value("${application.pokeapi.url}")
     private String pokeapiUrl;

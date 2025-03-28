@@ -24,4 +24,17 @@ public class PokemonResponse {
     public List<AbilityContainer> getAbilities() {
         return abilities;
     }
+
+    public PokemonResponse(String name) {
+        this.name = name;
+    }
+
+    public PokemonResponse(String name, List<AbilityContainer> abilities, List<TypeContainer> types) {
+        this.name = name;
+        this.abilities = abilities;
+        this.types = types;
+    }
+
+    public PokemonResponse() {
+    }
 }

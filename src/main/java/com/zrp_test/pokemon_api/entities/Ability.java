@@ -6,4 +6,11 @@ public class Ability {
     public String getName() {
         return name;
     }
+
+    public Ability() {
+    }
+
+    public Ability(String name) {
+        this.name = name;
+    }
 }

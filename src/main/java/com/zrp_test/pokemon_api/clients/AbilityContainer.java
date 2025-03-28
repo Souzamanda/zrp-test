@@ -10,4 +10,11 @@ public class AbilityContainer {
     public Ability getAbility() {
         return ability;
     }
+
+    public AbilityContainer() {
+    }
+
+    public AbilityContainer(Ability ability) {
+        this.ability = ability;
+    }
 }
